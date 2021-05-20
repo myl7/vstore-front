@@ -1,0 +1,5 @@
+# vstore Frontend
+
+## License
+
+MIT
