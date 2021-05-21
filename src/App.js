@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Header from './components/Header'
+import IndexView from './views/IndexView'
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
           test
         </Route>
         <Route exact path="/">
-          test
+          <IndexView />
         </Route>
       </Switch>
     </Router>
