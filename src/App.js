@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Header from './components/Header'
 import IndexView from './views/IndexView'
+import VideoView from './views/VideoView'
 
 const App = () => {
   return (
@@ -14,7 +15,7 @@ const App = () => {
           test
         </Route>
         <Route path="/videos/:vid">
-          test
+          <VideoView />
         </Route>
         <Route exact path="/">
           <IndexView />

@@ -10,3 +10,13 @@ export const listUserVideoMeta = async () => {
   const body = await res.json()
   return body['res']
 }
+
+export const getVideoMeta = async vid => {
+  const res = await fetch(ServerHost + `/api/videos/${vid}/meta`, {credentials: 'include'})
+  if (res.status !== 200) {
+    const err = await res.text()
+    console.error(err)
+    return null
+  }
+  return await res.json()
+}
