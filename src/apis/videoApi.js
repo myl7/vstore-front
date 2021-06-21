@@ -49,3 +49,17 @@ export const getVideoComments = async vid => {
   }
   return await res.json()
 }
+
+export const addVideoComments = async (vid, text) => {
+  const res = await fetch(ServerHost + `/api/videos/${vid}/comments`, {
+    credentials: 'include',
+    method: 'POST',
+    body: JSON.stringify({text})
+  })
+  if (res.status !== 201) {
+    const err = await res.text()
+    console.error(err)
+    return null
+  }
+  return await res.json()
+}

@@ -3,6 +3,7 @@ import Header from './components/Header'
 import IndexView from './views/IndexView'
 import VideoView from './views/VideoView'
 import VideoAddView from './views/VideoAddView'
+import CommentAddView from './views/CommentAddView'
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
           <VideoAddView />
         </Route>
         <Route path="/videos/:vid/comments/add">
-          test
+          <CommentAddView />
         </Route>
         <Route path="/videos/:vid">
           <VideoView />
