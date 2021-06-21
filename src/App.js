@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Header from './components/Header'
 import IndexView from './views/IndexView'
 import VideoView from './views/VideoView'
+import VideoAddView from './views/VideoAddView'
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route path="/videos/add">
-          test
+          <VideoAddView />
         </Route>
         <Route path="/videos/:vid/comments/add">
           test
