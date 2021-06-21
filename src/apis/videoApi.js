@@ -39,3 +39,13 @@ export const addVideo = async (title, description, file, sid = 1) => {
   }
   return await res.json()
 }
+
+export const getVideoComments = async vid => {
+  const res = await fetch(ServerHost + `/api/videos/${vid}/comments`, {credentials: 'include'})
+  if (res.status !== 200) {
+    const err = await res.text()
+    console.error(err)
+    return null
+  }
+  return await res.json()
+}

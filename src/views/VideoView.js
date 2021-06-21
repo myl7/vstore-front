@@ -1,7 +1,7 @@
 import {Card, CardContent, CardHeader, CircularProgress} from '@material-ui/core'
 import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
-import {getVideoMeta} from '../apis/videoApi'
+import {getVideoComments, getVideoMeta} from '../apis/videoApi'
 import ReactPlayer from 'react-player/lazy'
 
 const VideoView = () => {
@@ -9,13 +9,20 @@ const VideoView = () => {
 
   const [meta, setMeta] = useState()
 
+  const [comments, setComments] = useState([])
+
   useEffect(() => {
     getVideoMeta(vid).then(res => {
       if (res != null) {
         setMeta(res)
       }
     })
-  }, [setMeta, vid])
+    getVideoComments(vid).then(res => {
+      if (res != null) {
+        setComments(res.res)
+      }
+    })
+  }, [setMeta, setComments, vid])
 
   return (
     <div style={{padding: '0.5em'}}>
@@ -29,6 +36,11 @@ const VideoView = () => {
             <ReactPlayer controls url={[
               {src: `http://localhost:8080/api/videos/${meta.vid}/stream`, type: 'video/mp4'}
             ]} />
+            {comments ? (
+              JSON.stringify(comments) // TODO
+            ) : (
+              <CircularProgress />
+            )}
           </CardContent>
         </Card>
       ) : (
