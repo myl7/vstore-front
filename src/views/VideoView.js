@@ -1,5 +1,5 @@
-import {Card, CardContent, CardHeader, CircularProgress} from '@material-ui/core'
-import {useParams} from 'react-router-dom'
+import {Button, Card, CardContent, CardHeader, CircularProgress} from '@material-ui/core'
+import {useHistory, useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import {getVideoComments, getVideoMeta} from '../apis/videoApi'
 import ReactPlayer from 'react-player/lazy'
@@ -10,6 +10,10 @@ const VideoView = () => {
   const [meta, setMeta] = useState()
 
   const [comments, setComments] = useState([])
+
+  const history = useHistory()
+
+  const handleClick = path => () => history.push(path)
 
   useEffect(() => {
     getVideoMeta(vid).then(res => {
