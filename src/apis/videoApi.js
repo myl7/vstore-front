@@ -1,7 +1,7 @@
 const ServerHost = ''
 
 export const listUserVideoMeta = async () => {
-  const res = await fetch(ServerHost + '/api/videos', {credentials: 'include'})
+  const res = await fetch(ServerHost + '/api/videos')
   if (res.status !== 200) {
     const err = await res.text()
     console.error(err)
@@ -12,7 +12,7 @@ export const listUserVideoMeta = async () => {
 }
 
 export const getVideoMeta = async vid => {
-  const res = await fetch(ServerHost + `/api/videos/${vid}/meta`, {credentials: 'include'})
+  const res = await fetch(ServerHost + `/api/videos/${vid}/meta`)
   if (res.status !== 200) {
     const err = await res.text()
     console.error(err)
@@ -29,7 +29,6 @@ export const addVideo = async (title, description, file, sid = 1) => {
   body.set('description', description)
   const res = await fetch(ServerHost + '/api/videos', {
     method: 'POST',
-    credentials: 'include',
     body
   })
   if (res.status !== 201) {
@@ -41,7 +40,7 @@ export const addVideo = async (title, description, file, sid = 1) => {
 }
 
 export const getVideoComments = async vid => {
-  const res = await fetch(ServerHost + `/api/videos/${vid}/comments`, {credentials: 'include'})
+  const res = await fetch(ServerHost + `/api/videos/${vid}/comments`)
   if (res.status !== 200) {
     const err = await res.text()
     console.error(err)
@@ -52,7 +51,6 @@ export const getVideoComments = async vid => {
 
 export const addVideoComments = async (vid, text) => {
   const res = await fetch(ServerHost + `/api/videos/${vid}/comments`, {
-    credentials: 'include',
     method: 'POST',
     body: JSON.stringify({text})
   })
