@@ -1,4 +1,4 @@
-const ServerHost = 'http://localhost:8080'
+const ServerHost = ''
 
 export const listUserVideoMeta = async () => {
   const res = await fetch(ServerHost + '/api/videos', {credentials: 'include'})
