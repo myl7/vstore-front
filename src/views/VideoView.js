@@ -41,7 +41,23 @@ const VideoView = () => {
               {src: `http://localhost:8080/api/videos/${meta.vid}/stream`, type: 'video/mp4'}
             ]} />
             {comments ? (
-              JSON.stringify(comments) // TODO
+              <Card>
+                <CardHeader title="评论" />
+                <CardContent>
+                  {comments.map(comment => (
+                    <Card style={{marginTop: '1em'}}>
+                      <CardHeader title={'By ' + comment.user_name} subheader={comment.time} />
+                      <CardContent>
+                        {comment.text}
+                      </CardContent>
+                    </Card>
+                  ))}
+                  <Button style={{marginTop: '1em'}} variant="outlined"
+                          onClick={handleClick(`/videos/${vid}/comments/add`)}>
+                    Comment
+                  </Button>
+                </CardContent>
+              </Card>
             ) : (
               <CircularProgress />
             )}
