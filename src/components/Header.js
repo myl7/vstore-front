@@ -7,6 +7,8 @@ const Header = () => {
 
   const handleClick = path => () => history.push(path)
 
+  const handleLinkClick = path => () => window.location.href = path
+
   return (
     <AppBar position="static" component="header">
       <Toolbar>
@@ -14,6 +16,8 @@ const Header = () => {
           <HomeIcon />
         </IconButton>
         <Button variant="outlined" onClick={handleClick('/videos/add')}>Upload</Button>
+        <div style={{flexGrow: 1}} />
+        <Button variant="outlined" onClick={handleLinkClick('/auth/start')}>Login</Button>
       </Toolbar>
     </AppBar>
   )
